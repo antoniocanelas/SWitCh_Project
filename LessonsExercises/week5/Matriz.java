@@ -1,0 +1,129 @@
+/**
+ * 
+ */
+package week5;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * @author anton
+ *
+ */
+public class Matriz {
+
+	private static int length;
+	int m[][];
+	int nLinhas, nColunas;
+
+	public Matriz(int l, int c) { // Construtor, tem de ser publicos. este metodo tem o mesmo nome do de baixo mas
+									// este recebe 2 inteiros.
+		m = new int[l][c]; // NAO HA TESTES AOS CONTRUTORES
+		nLinhas = l;
+		nColunas = c;
+	}
+
+	public Matriz(int a[][]) { // e este recebe uma matriz. quando chamo com uma matriz ele sabia logo que era
+								// este e nao o de cima.
+		m = new int[a.length][a[0].length];
+		nLinhas = a.length;
+		nColunas = a[0].length;
+
+		for (int i = 0; i < nLinhas; i++) {
+			for (int j = 0; j < nColunas; j++) {
+				m[i][j] = a[i][j];
+			}
+		}
+	}
+
+	public Matriz Soma(Matriz b) {
+		Matriz c = new Matriz(b.nLinhas, b.nColunas);
+		for (int i = 0; i < nLinhas; i++) {
+			for (int j = 0; j < nColunas; j++) {
+				c.m[i][j] = m[i][j] + (b.m[i][j]);
+			}
+		}
+		return c;
+	}
+
+
+	public Matriz multiplicacao(Matriz b) {
+		int numeroLinCol = Math.max(nLinhas, nColunas);
+		Matriz Mult = new Matriz(numeroLinCol, numeroLinCol);
+
+		nLinhas = b.m.length;
+		nColunas = b.m[0].length;
+
+		for (int i = 0; i < nLinhas; i++) {
+			for (int j = 0; j < nColunas; j++) {
+				Mult.m[i][j] = m[i][j] + (b.m[i][j]);
+			}
+
+		}
+		return Mult;
+	}
+	
+	public List<Ponto> getPontosComNumero(int numero) {
+        List <Ponto> lista = new ArrayList<Ponto>();
+        for (int i = 0; i < m.length; i++) {
+            for (int j=0; j < m[i].length; j++) {
+                if (m[i][j] == numero) {
+                    Ponto p = new Ponto (i, j);
+                    lista.add(p);
+                }
+            }
+        }
+        return lista;
+    }
+	
+	public boolean setValor(int[] ponto, int valor) {
+		m[ponto[0]][ponto[1]]=valor;
+		
+		
+		return true;
+		
+	}
+	
+	public int getValor(int[] ponto) {
+		int verValor = m[ponto[0]][ponto[1]];
+		return verValor;
+		
+	}
+
+
+	@Override // estou a alterar, a sobrecarregar o metodo, alterar o metodo que ja existe.
+	public boolean equals(Object other) { // recebe um objeto e retorna verdadeiro e falso. o other recebe um objeto
+											// qualquer. a primeira coisa a fazer neste caso e ver se o objeto e matriz.
+		boolean res = false; // assumindo que e falso no inicio
+		if (other instanceof Matriz) {// se o obj other for do tipo matriz, entao... caso nao seja nem corre
+			Matriz m2 = (Matriz) other; // isto pega na matriz e assume que e uma matriz
+			if (m2.nLinhas == this.nLinhas && m2.nColunas == this.nColunas) {// se linhas sao todas iguais
+				res = true;
+				for (int i = 0; i < this.nLinhas && res; i++) {
+					for (int j = 0; j < this.nColunas && res; j++) // mal o res seja falso, ele salta logo
+						res = m2.m[i][j] == this.m[i][j];
+				}
+			}
+		}
+		return res;
+
+	}
+
+	@Override
+	public String toString() {
+		String res = ""; // string vazia
+		if (this.nLinhas > 0 && this.nColunas > 0) { // colunas e linhas tem de ser maior que 0
+			for (int i = 0; i < this.nLinhas; i++) { // percorre as linhas
+				for (int j = 0; j < this.nColunas; j++) { // percorre as colunas
+					res = res + " " + this.m[i][j];
+				}
+			}
+			res = res + "\n"; // salta para a linha seguinte.
+		}
+		return res;
+	}
+
+	
+
+}
