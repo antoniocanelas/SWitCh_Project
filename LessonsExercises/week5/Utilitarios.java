@@ -6,6 +6,7 @@ import java.util.List;
 public class Utilitarios {
 
 	public static List<Ponto> getPontos(char[][] matrix, char ponto) {
+
 		List<Ponto> list = new ArrayList<>();
 		for (int linha = 0; linha < matrix.length; linha++) {
 			for (int coluna = 0; coluna < matrix[linha].length; coluna++) {
