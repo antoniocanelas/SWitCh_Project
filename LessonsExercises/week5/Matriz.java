@@ -4,7 +4,6 @@
 package week5;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,7 +12,6 @@ import java.util.List;
  */
 public class Matriz {
 
-	private static int length;
 	int m[][];
 	int nLinhas, nColunas;
 
@@ -39,58 +37,58 @@ public class Matriz {
 
 	public Matriz Soma(Matriz b) {
 		Matriz c = new Matriz(b.nLinhas, b.nColunas);
-		for (int i = 0; i < nLinhas; i++) {
-			for (int j = 0; j < nColunas; j++) {
+		for (int i = 0; i < this.nLinhas; i++) {// não é necessário "this.", parametros nLinhas acessíveis na classe
+			for (int j = 0; j < this.nColunas; j++) {
 				c.m[i][j] = m[i][j] + (b.m[i][j]);
 			}
 		}
 		return c;
 	}
 
-
-	public Matriz multiplicacao(Matriz b) {
-		int numeroLinCol = Math.max(nLinhas, nColunas);
-		Matriz Mult = new Matriz(numeroLinCol, numeroLinCol);
-
-		nLinhas = b.m.length;
-		nColunas = b.m[0].length;
-
-		for (int i = 0; i < nLinhas; i++) {
-			for (int j = 0; j < nColunas; j++) {
-				Mult.m[i][j] = m[i][j] + (b.m[i][j]);
+	public Matriz multiplicacao(Matriz matrixB) {
+		if (nColunas == matrixB.nLinhas) {
+			Matriz mult = new Matriz(nLinhas, matrixB.nColunas);
+			for (int colunas = 0; colunas < matrixB.nColunas; colunas++) {
+				for (int linhas = 0; linhas < nLinhas; linhas++) {
+					int multVal = 0;
+					for (int index = 0; index < nColunas; index++) {
+						multVal += (m[linhas][index]) * (matrixB.m[index][colunas]);
+						mult.m[linhas][colunas] = multVal;
+					}
+				}
 			}
 
+			return mult;
 		}
-		return Mult;
+		return null;
+
 	}
-	
+
 	public List<Ponto> getPontosComNumero(int numero) {
-        List <Ponto> lista = new ArrayList<Ponto>();
-        for (int i = 0; i < m.length; i++) {
-            for (int j=0; j < m[i].length; j++) {
-                if (m[i][j] == numero) {
-                    Ponto p = new Ponto (i, j);
-                    lista.add(p);
-                }
-            }
-        }
-        return lista;
-    }
-	
-	public boolean setValor(int[] ponto, int valor) {
-		m[ponto[0]][ponto[1]]=valor;
-		
-		
-		return true;
-		
+		List<Ponto> lista = new ArrayList<Ponto>();
+		for (int i = 0; i < m.length; i++) {
+			for (int j = 0; j < m[i].length; j++) {
+				if (m[i][j] == numero) {
+					Ponto p = new Ponto(i, j);
+					lista.add(p);
+				}
+			}
+		}
+		return lista;
 	}
-	
+
+	public boolean setValor(int[] ponto, int valor) {
+		m[ponto[0]][ponto[1]] = valor;
+
+		return true;
+
+	}
+
 	public int getValor(int[] ponto) {
 		int verValor = m[ponto[0]][ponto[1]];
 		return verValor;
-		
-	}
 
+	}
 
 	@Override // estou a alterar, a sobrecarregar o metodo, alterar o metodo que ja existe.
 	public boolean equals(Object other) { // recebe um objeto e retorna verdadeiro e falso. o other recebe um objeto
@@ -123,7 +121,4 @@ public class Matriz {
 		}
 		return res;
 	}
-
-	
-
 }

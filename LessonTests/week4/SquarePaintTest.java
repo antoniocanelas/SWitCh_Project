@@ -155,12 +155,12 @@ public class SquarePaintTest {
 	}
 	
 	// 
-	@Test
-	public void charFind() {
-		
-		SquarePaint.charFind();
-		assertEquals(4,SquarePaint.charFind);
-	}
+//	@Test
+//	public void charFind() {
+//		
+//		SquarePaint.charFind();
+//		assertEquals(4,SquarePaint.charFind);
+//	}
 	
 	
 }
