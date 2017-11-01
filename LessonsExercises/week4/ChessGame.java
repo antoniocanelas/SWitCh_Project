@@ -1,7 +1,8 @@
 package week4;
 
 public class ChessGame {
-	public static final int CHESS_MAX_INDEX=7, CHESS_MIN_INDEX=0;
+	public static final int CHESS_MAX_INDEX = 7, CHESS_MIN_INDEX = 0;
+
 	public static char[][] movePiece(char[][] chessTable, int[] initialPosition, int[] finalPosition) {
 
 		char pieceType = chessTable[initialPosition[0]][initialPosition[1]];
@@ -10,52 +11,69 @@ public class ChessGame {
 		return chessTable;
 
 	}
-	
+
 	public static boolean isValidPlay(char[][] chessTable, int[] initialPosition, int[] finalPosition) {
 		char pieceType = chessTable[initialPosition[0]][initialPosition[1]];
-		
+
 		switch (pieceType) {
 		case 'T':
-			if (!isRookMovementValid(chessTable, initialPosition, finalPosition)) return false;
+			if (!isRookMovementValid(chessTable, initialPosition, finalPosition))
+				return false;
 			break;
 		case 't':
-			if (!isRookMovementValid(chessTable, initialPosition, finalPosition)) return false;
+			if (!isRookMovementValid(chessTable, initialPosition, finalPosition))
+				return false;
 			break;
-			
+
 		case 'B':
-			if (!isBishopMovementValid(chessTable, initialPosition, finalPosition)) return false;
+			if (!isBishopMovementValid(chessTable, initialPosition, finalPosition))
+				return false;
 			break;
 		case 'b':
-			if (!isBishopMovementValid(chessTable, initialPosition, finalPosition)) return false;
+			if (!isBishopMovementValid(chessTable, initialPosition, finalPosition))
+				return false;
 			break;
-			
+
 		case 'Q':
-			if (!isQueenMovementValid(chessTable, initialPosition, finalPosition)) return false;
+			if (!isQueenMovementValid(chessTable, initialPosition, finalPosition))
+				return false;
 			break;
 		case 'q':
-			if (!isQueenMovementValid(chessTable, initialPosition, finalPosition)) return false;
+			if (!isQueenMovementValid(chessTable, initialPosition, finalPosition))
+				return false;
 			break;
-			
-		case 'K':
-			if (!isKingMovementValid(chessTable, initialPosition, finalPosition)) return false;
+
+		case 'R':
+			if (!isKingMovementValid(chessTable, initialPosition, finalPosition))
+				return false;
 			break;
-		case 'k':
-			if (!isKingMovementValid(chessTable, initialPosition, finalPosition)) return false;
+		case 'r':
+			if (!isKingMovementValid(chessTable, initialPosition, finalPosition))
+				return false;
 			break;
-			
+		case 'C':
+			if (!isKnightMovementValid(chessTable, initialPosition, finalPosition))
+				return false;
+			break;
+		case 'c':
+			if (!isKnightMovementValid(chessTable, initialPosition, finalPosition))
+				return false;
+			break;
+
 		case 'P':
-			if (!isWhitePawnMovementValid(chessTable, initialPosition, finalPosition)) return false;
+			if (!isWhitePawnMovementValid(chessTable, initialPosition, finalPosition))
+				return false;
 			break;
 		case 'p':
-			if (!isBlackPawnMovementValid(chessTable, initialPosition, finalPosition)) return false;
+			if (!isBlackPawnMovementValid(chessTable, initialPosition, finalPosition))
+				return false;
 			break;
-			
+
 		default:
 			return false;
 		}
 		return true;
 	}
-
 
 	public static boolean isChessValid(char[][] tabuleiro) {
 
@@ -69,8 +87,7 @@ public class ChessGame {
 	}
 
 	public static boolean isPostionValid(int[] piecePosition) {
-		
-		
+
 		if (!(piecePosition[0] >= CHESS_MIN_INDEX))
 			return false;
 		if (!(piecePosition[0] <= CHESS_MAX_INDEX))
@@ -176,7 +193,7 @@ public class ChessGame {
 	}
 
 	public static boolean isWhitePawnMovementValid(char[][] chessTable, int[] initialPosition, int[] finalPosition) {
-	
+
 		if (!isChessValid(chessTable))
 			return false;
 		if (!isPostionValid(initialPosition))
@@ -190,16 +207,16 @@ public class ChessGame {
 		if (!isPawnMovementOK(chessTable, initialPosition, finalPosition))
 			return false;
 		return true;
-	
+
 	}
 
 	public static boolean isBlackPawnMovementValid(char[][] tabuleiro, int[] posicaoInicial, int[] posicaoFinal) {
 		if (!isWhitePawnMovementValid(chessTableMirror(tabuleiro), arrayMirror(posicaoInicial),
 				arrayMirror(posicaoFinal)))
 			return false;
-	
+
 		return true;
-	
+
 	}
 
 	public static boolean isFinalPostionValid(char[][] tabuleiro, int[] posicaoInical, int[] posicaoFinal) {
@@ -336,7 +353,7 @@ public class ChessGame {
 
 		isRowMovement = (finalPosition[1] - initialPosition[1] != 0) && (finalPosition[0] - initialPosition[0] == 0);
 		isLineMovement = (finalPosition[0] - initialPosition[0] != 0) && (finalPosition[1] - initialPosition[1] == 0);
-		
+
 		isMovimentoDiagonalCres = (finalPosition[0] - initialPosition[0]) == -(finalPosition[1] - initialPosition[1]);
 		isMovimentoDiagonalDec = (finalPosition[0] - initialPosition[0]) == (finalPosition[1] - initialPosition[1]);
 

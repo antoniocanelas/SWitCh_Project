@@ -1,6 +1,6 @@
 package week2;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -8,10 +8,10 @@ import week1.Factorial;
 
 public class FactorialTest {
 
-//	@Test
-//	public void testfactorial0() throws Exception {
-//		assertEquals("O factorial de 1 é 1", Factorial.fac(1));
-//	}
+	@Test
+	public void testfactorial0() throws Exception {
+		assertEquals(1, Factorial.fac(1));
+	}
 
 	@Test(expected = Exception.class)
 	public void testfactorial1() throws Exception {

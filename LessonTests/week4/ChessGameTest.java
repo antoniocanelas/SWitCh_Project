@@ -1,10 +1,10 @@
 package week4;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-
-import week4.ChessGame;
 
 public class ChessGameTest {
 	char[][] initialTable = { { 't', 'c', 'b', 'q', 'r', 'b', 'c', 't' }, { 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p' },
@@ -534,21 +534,21 @@ public class ChessGameTest {
 	}
 
 	// *** isKingMovementValid ***
-//	@Test
-//	public void isValidPlay22() {
-//		int[] intialposition = { 4, 4 };
-//		int[] finalPosition = { 3, 3 };
-//		assertTrue(ChessGame.isValidPlay(kingAndOthersTable, intialposition, finalPosition));
-//
-//	}
+	@Test
+	public void isValidPlay22() {
+		int[] intialposition = { 4, 4 };
+		int[] finalPosition = { 3, 3 };
+		assertTrue(ChessGame.isValidPlay(kingAndOthersTable, intialposition, finalPosition));
 
-//	@Test
-//	public void isValidPlay23() {
-//		int[] intialposition = { 4, 4 };
-//		int[] finalPosition = { 4, 5 };
-//		assertTrue(ChessGame.isValidPlay(kingAndOthersTable, intialposition, finalPosition));
-//
-//	}
+	}
+
+	@Test
+	public void isValidPlay23() {
+		int[] intialposition = { 4, 4 };
+		int[] finalPosition = { 4, 5 };
+		assertTrue(ChessGame.isValidPlay(kingAndOthersTable, intialposition, finalPosition));
+
+	}
 
 	@Test
 	public void isValidPlay24() {
@@ -558,13 +558,13 @@ public class ChessGameTest {
 
 	}
 
-//	@Test
-//	public void isValidPlay25() {
-//		int[] intialposition = { 3, 2 };
-//		int[] finalPosition = { 4, 0 };
-//		assertTrue(ChessGame.isValidPlay(kingAndOthersTable, intialposition, finalPosition));
-//
-//	}
+	@Test
+	public void isValidPlay25() {
+		int[] intialposition = { 3, 2 };
+		int[] finalPosition = { 4, 0 };
+		assertTrue(ChessGame.isValidPlay(kingAndOthersTable, intialposition, finalPosition));
+
+	}
 
 	@Test
 	public void isKnightMovementValid25() {
