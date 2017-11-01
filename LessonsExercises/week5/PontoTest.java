@@ -3,11 +3,11 @@
  */
 package week5;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
-import week5.Utilitarios;
+
 import org.junit.Test;
 
 /**
@@ -28,15 +28,13 @@ public class PontoTest {
 		expected.add(p2);
 
 		assertEquals(expected, Utilitarios.getPontos(matrix, charater));
-
 	}
-	
+
 	@Test
 	public void test2() {
 		char[][] matrix = { { 'a', 'c', 'd' }, { 'd', 'f', 'g' }, { 'r', 'c', 'a' } };
 		char charater = 'c';
 
-		
 		List<Ponto> expected = new ArrayList<Ponto>();
 		expected.add(new Ponto(0, 1));
 		expected.add(new Ponto(2, 1));

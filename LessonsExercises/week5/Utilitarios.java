@@ -3,8 +3,6 @@ package week5;
 import java.util.ArrayList;
 import java.util.List;
 
-import week5.Ponto;
-
 public class Utilitarios {
 
 	public static List<Ponto> getPontos(char[][] matrix, char ponto) {
@@ -20,4 +18,5 @@ public class Utilitarios {
 		return list;
 
 	}
+
 }
