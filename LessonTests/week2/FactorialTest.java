@@ -4,18 +4,18 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import week1.Factorial;
+import week1.FactorialNaoRecursivo;
 
 public class FactorialTest {
 
 	@Test
 	public void testfactorial0() throws Exception {
-		assertEquals(1, Factorial.fac(1));
+		assertEquals(1, FactorialNaoRecursivo.fac(1));
 	}
 
 	@Test(expected = Exception.class)
 	public void testfactorial1() throws Exception {
-		Factorial.fac(-2);
+		FactorialNaoRecursivo.fac(-2);
 	}
 
 }
