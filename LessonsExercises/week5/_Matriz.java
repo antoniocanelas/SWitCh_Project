@@ -10,19 +10,19 @@ import java.util.List;
  * @author anton
  *
  */
-public class Matriz {
+public class _Matriz {
 
 	int m[][];
 	int nLinhas, nColunas;
 
-	public Matriz(int l, int c) { // Construtor, tem de ser publicos. este metodo tem o mesmo nome do de baixo mas
+	public _Matriz(int l, int c) { // Construtor, tem de ser publicos. este metodo tem o mesmo nome do de baixo mas
 									// este recebe 2 inteiros.
 		m = new int[l][c]; // NAO HA TESTES AOS CONTRUTORES
 		nLinhas = l;
 		nColunas = c;
 	}
 
-	public Matriz(int a[][]) { // e este recebe uma matriz. quando chamo com uma matriz ele sabia logo que era
+	public _Matriz(int a[][]) { // e este recebe uma matriz. quando chamo com uma matriz ele sabia logo que era
 								// este e nao o de cima.
 		m = new int[a.length][a[0].length];
 		nLinhas = a.length;
@@ -35,8 +35,8 @@ public class Matriz {
 		}
 	}
 
-	public Matriz Soma(Matriz b) {
-		Matriz c = new Matriz(b.nLinhas, b.nColunas);
+	public _Matriz Soma(_Matriz b) {
+		_Matriz c = new _Matriz(b.nLinhas, b.nColunas);
 		for (int i = 0; i < this.nLinhas; i++) {// não é necessário "this.", parametros nLinhas acessíveis na classe
 			for (int j = 0; j < this.nColunas; j++) {
 				c.m[i][j] = m[i][j] + (b.m[i][j]);
@@ -45,9 +45,9 @@ public class Matriz {
 		return c;
 	}
 
-	public Matriz multiplicacao(Matriz matrixB) {
+	public _Matriz multiplicacao(_Matriz matrixB) {
 		if (nColunas == matrixB.nLinhas) {
-			Matriz mult = new Matriz(nLinhas, matrixB.nColunas);
+			_Matriz mult = new _Matriz(nLinhas, matrixB.nColunas);
 			for (int colunas = 0; colunas < matrixB.nColunas; colunas++) {
 				for (int linhas = 0; linhas < nLinhas; linhas++) {
 					int multVal = 0;
@@ -64,12 +64,12 @@ public class Matriz {
 
 	}
 
-	public List<Ponto> getPontosComNumero(int numero) {
-		List<Ponto> lista = new ArrayList<Ponto>();
+	public List<_Ponto> getPontosComNumero(int numero) {
+		List<_Ponto> lista = new ArrayList<_Ponto>();
 		for (int i = 0; i < m.length; i++) {
 			for (int j = 0; j < m[i].length; j++) {
 				if (m[i][j] == numero) {
-					Ponto p = new Ponto(i, j);
+					_Ponto p = new _Ponto(i, j);
 					lista.add(p);
 				}
 			}
@@ -94,8 +94,8 @@ public class Matriz {
 	public boolean equals(Object other) { // recebe um objeto e retorna verdadeiro e falso. o other recebe um objeto
 											// qualquer. a primeira coisa a fazer neste caso e ver se o objeto e matriz.
 		boolean res = false; // assumindo que e falso no inicio
-		if (other instanceof Matriz) {// se o obj other for do tipo matriz, entao... caso nao seja nem corre
-			Matriz m2 = (Matriz) other; // isto pega na matriz e assume que e uma matriz
+		if (other instanceof _Matriz) {// se o obj other for do tipo matriz, entao... caso nao seja nem corre
+			_Matriz m2 = (_Matriz) other; // isto pega na matriz e assume que e uma matriz
 			if (m2.nLinhas == this.nLinhas && m2.nColunas == this.nColunas) {// se linhas sao todas iguais
 				res = true;
 				for (int i = 0; i < this.nLinhas && res; i++) {
