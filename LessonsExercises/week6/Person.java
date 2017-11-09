@@ -1,19 +1,28 @@
 package week6;
 
-public class Contact {
+public class Person {
 
-    private String phoneNumber;
     private String name;
+    private String phoneNumber;
 
-    public Contact(String name, String phoneNumber) {
+    private ContactBook contactBook;
+
+    public Person(String name, String phoneNumber) {
 
 	this.phoneNumber = phoneNumber;
 	this.name = name;
+	this.contactBook = new ContactBook();
+
     }
 
     public String getPhoneNumber() {
 
 	return this.phoneNumber;
+    }
+
+    public ContactBook getContactBook() {
+
+	return this.contactBook;
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -32,15 +41,6 @@ public class Contact {
     }
 
     @Override
-    public int hashCode() {
-
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + ((this.phoneNumber == null) ? 0 : this.phoneNumber.hashCode());
-	return result;
-    }
-
-    @Override
     public boolean equals(Object obj) {
 
 	if (this == obj) {
@@ -52,7 +52,7 @@ public class Contact {
 	if (getClass() != obj.getClass()) {
 	    return false;
 	}
-	Contact other = (Contact) obj;
+	Person other = (Person) obj;
 	if (this.phoneNumber == null) {
 	    if (other.phoneNumber != null) {
 		return false;
