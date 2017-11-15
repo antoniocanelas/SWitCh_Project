@@ -3,7 +3,7 @@ package week8;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactBook {
+public class Contactbook {
 
     public List<Person> contactBook = new ArrayList<>();
 
@@ -39,10 +39,14 @@ public class ContactBook {
 
     }
 
-    @Override
-    public String toString() {
+    public List<Person> getContactBook() {
 
-	return "ContactBook [contactBook=" + this.contactBook + "]";
+	return contactBook;
+    }
+
+    public void setContactBook(List<Person> contactBook) {
+
+	this.contactBook = contactBook;
     }
 
     @Override
@@ -57,7 +61,7 @@ public class ContactBook {
 	if (getClass() != obj.getClass()) {
 	    return false;
 	}
-	ContactBook other = (ContactBook) obj;
+	Contactbook other = (Contactbook) obj;
 	if (this.contactBook == null) {
 	    if (other.contactBook != null) {
 		return false;
@@ -80,9 +84,9 @@ public class ContactBook {
 
     }
 
-    public ContactBook commonPerson(ContactBook cb) {
+    public Contactbook commonPerson(Contactbook cb) {
 
-	ContactBook result = new ContactBook();
+	Contactbook result = new Contactbook();
 
 	for (Person p1 : this.contactBook) {
 	    for (Person p2 : cb.contactBook) {
@@ -95,4 +99,16 @@ public class ContactBook {
 	return result;
 
     }
+
+    public Person devolvePessoa(String numeroMecanografico) {
+
+	for (Person p : contactBook) {
+	    if (p.getNumeroMecanografico() == numeroMecanografico) {
+		return p;
+	    }
+	}
+	return null;
+    }
+    // TODO ÇLKSDJKLÇSDFJÇK DFASDF SDFADSFAS
+
 }

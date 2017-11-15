@@ -1,0 +1,15 @@
+User Stories:
+
+OK - US101 - Como utilizador da aplicação de gestão de projetos, eu pretendo registar-me como colaborador de forma a poder usufruir das suas várias funcionalidades.
+
+OK - US201 - Como colaborador, eu pretendo retificar os meus dados pessoais (e.g. nome, email) para os manter sempre atualizados.
+
+OK - US202 - Como colaborador, eu pretendo associar um novo endereço postal ao meu perfil.
+
+US203 - Como colaborador, eu pretendo consultar a minha lista de tarefas pendentes de modo a saber o que tenho para fazer hoje.
+
+US204 - Como colaborador, eu pretendo adicionar uma tarefa à minha lista de tarefas.
+
+US205 - Como colaborador, eu pretendo marcar uma tarefa que consta na minha lista de tarefas como concluida.
+
+US206 - Como colaborador, eu pretendo remover uma tarefa que consta na minha lista de tarefas. 

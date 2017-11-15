@@ -42,7 +42,7 @@ public class ContactBook {
     @Override
     public String toString() {
 
-	return "ContactBook [contactBook=" + this.contactBook + "]";
+	return "Contactbook [contactBook=" + this.contactBook + "]";
     }
 
     @Override
