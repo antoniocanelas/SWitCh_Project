@@ -11,7 +11,7 @@ public class TarefasPendentes {
 
     public String getDescricao() {
 
-	return descricao;
+	return this.descricao;
     }
 
     public void setDescricao(String descricao) {
@@ -21,7 +21,7 @@ public class TarefasPendentes {
 
     public Date getDataCriacao() {
 
-	return dataCriacao;
+	return this.dataCriacao;
     }
 
     public void setDataCriacao(Date dataCriacao) {
@@ -31,7 +31,7 @@ public class TarefasPendentes {
 
     public Date getDataIniciada() {
 
-	return dataIniciada;
+	return this.dataIniciada;
     }
 
     public void setDataIniciada(Date dataIniciada) {
@@ -41,7 +41,7 @@ public class TarefasPendentes {
 
     public Date getDataConcluida() {
 
-	return dataConcluida;
+	return this.dataConcluida;
     }
 
     public void setDataConcluida(Date dataConcluida) {
@@ -60,13 +60,12 @@ public class TarefasPendentes {
     @Override
     public String toString() {
 
-	return "[descricao=" + descricao + ", dataCriacao=" + dataCriacao + ", dataIniciada=" + dataIniciada
-		+ ", dataConcluida=" + dataConcluida + "]";
+	return "[descricao=" + this.descricao + ", dataCriacao=" + this.dataCriacao + ", dataIniciada="
+		+ this.dataIniciada + ", dataConcluida=" + this.dataConcluida + "]";
     }
 
     public TarefasPendentes() {
 
-	// TODO Auto-generated constructor stub
     }
 
 }

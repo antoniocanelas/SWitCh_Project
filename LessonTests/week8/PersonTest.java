@@ -13,7 +13,7 @@ import org.junit.Test;
 public class PersonTest {
 
     @Test
-    public void EqualsTrue() {
+    public void PersonEqualsTrue() {
 
 	Contactbook contactBook = new Contactbook();
 	List<EnderecoPostal> enderecoPostal = new ArrayList<>();
@@ -31,7 +31,7 @@ public class PersonTest {
     }
 
     @Test
-    public void EqualsFalse() {
+    public void PersonEqualsFalse() {
 
 	Contactbook contactBook = new Contactbook();
 	List<EnderecoPostal> enderecoPostal = new ArrayList<>();
@@ -45,6 +45,55 @@ public class PersonTest {
 		contactBook, "1", enderecoPostal, tarefasConcluidas, tarefasPendentes);
 
 	assertFalse(person1.equals(person2));
+
+    }
+
+    @Test
+    public void setNameEquals() {
+
+	Contactbook contactBook = new Contactbook();
+	List<EnderecoPostal> enderecoPostal = new ArrayList<>();
+	List<TarefasPendentes> tarefasPendentes = new ArrayList<>();
+	List<TarefasConcluidas> tarefasConcluidas = new ArrayList<>();
+	Contactbook colaboradores = new Contactbook();
+
+	Person person1 = new Person("Asdrubal", "96 999 999 9", "207867161", "Asdrubal@gmail.com", "20/05/1981",
+		contactBook, "1", enderecoPostal, tarefasConcluidas, tarefasPendentes);
+	Person person2 = new Person("Asdrubal", "96 999 999 9", "207867161", "Asdrubal@gmail.com", "20/05/1981",
+		contactBook, "1", enderecoPostal, tarefasConcluidas, tarefasPendentes);
+
+	colaboradores.contactAdd(person1);
+
+	colaboradores.devolvePessoa("1").setName("Asdrubalx");
+
+	person1.getContactBook().contactAdd(person2);
+
+	assertEquals("Asdrubalx", colaboradores.devolvePessoa("1").getName().toString());
+
+    }
+
+    @Test
+    public void setNameNotEquals() {
+
+	Contactbook contactBook = new Contactbook();
+	List<EnderecoPostal> enderecoPostal = new ArrayList<>();
+	List<TarefasPendentes> tarefasPendentes = new ArrayList<>();
+	List<TarefasConcluidas> tarefasConcluidas = new ArrayList<>();
+	Contactbook colaboradores = new Contactbook();
+
+	Person person1 = new Person("Asdrubal", "96 999 999 9", "207867161", "Asdrubal@gmail.com", "20/05/1981",
+		contactBook, "1", enderecoPostal, tarefasConcluidas, tarefasPendentes);
+	Person person2 = new Person("Asdrubal", "96 999 999 9", "207867161", "Asdrubal@gmail.com", "20/05/1981",
+		contactBook, "1", enderecoPostal, tarefasConcluidas, tarefasPendentes);
+
+	colaboradores.contactAdd(person1);
+
+	colaboradores.devolvePessoa("1").setName("Asdrubalx");
+	assertEquals("Asdrubalx", colaboradores.devolvePessoa("1").getName());
+
+	person1.getContactBook().contactAdd(person2);
+
+	assertNotEquals("Asdrubal", colaboradores.devolvePessoa("1").getName().toString());
 
     }
 
@@ -68,6 +117,25 @@ public class PersonTest {
     }
 
     @Test
+    public void setEmailNotEquals() {
+
+	Contactbook contactBook = new Contactbook();
+	List<EnderecoPostal> enderecoPostal = new ArrayList<>();
+	List<TarefasPendentes> tarefasPendentes = new ArrayList<>();
+	List<TarefasConcluidas> tarefasConcluidas = new ArrayList<>();
+	Contactbook colaboradores = new Contactbook();
+
+	Person person1 = new Person("Asdrubal", "96 999 999 9", "207867161", "Asdrubal@gmail.com", "20/05/1981",
+		contactBook, "1", enderecoPostal, tarefasConcluidas, tarefasPendentes);
+
+	colaboradores.contactAdd(person1);
+
+	colaboradores.devolvePessoa("1").setEmail("Asdrubal@gmail.pt");
+
+	assertNotEquals("Asdrubal@gmail.com", colaboradores.devolvePessoa("1").getEmail());
+    }
+
+    @Test
     public void setDataNascimentoEquals() {
 
 	Contactbook contactBook = new Contactbook();
@@ -87,7 +155,7 @@ public class PersonTest {
     }
 
     @Test
-    public void setNameEquals() {
+    public void setDataNascimentoNotEquals() {
 
 	Contactbook contactBook = new Contactbook();
 	List<EnderecoPostal> enderecoPostal = new ArrayList<>();
@@ -97,22 +165,16 @@ public class PersonTest {
 
 	Person person1 = new Person("Asdrubal", "96 999 999 9", "207867161", "Asdrubal@gmail.com", "20/05/1981",
 		contactBook, "1", enderecoPostal, tarefasConcluidas, tarefasPendentes);
-	Person person2 = new Person("Asdrubal", "96 999 999 9", "207867161", "Asdrubal@gmail.com", "20/05/1981",
-		contactBook, "1", enderecoPostal, tarefasConcluidas, tarefasPendentes);
 
 	colaboradores.contactAdd(person1);
 
-	colaboradores.devolvePessoa("1").setName("Asdrubalx");
-	assertEquals("Asdrubalx", colaboradores.devolvePessoa("1").getName());
-
-	person1.getContactBook().contactAdd(person2);
-
-	assertEquals("Asdrubalx", colaboradores.devolvePessoa("1").getName().toString());
+	colaboradores.devolvePessoa("1").setDataNascimento("21/05/1981");
+	assertNotEquals("20/05/1981", colaboradores.devolvePessoa("1").getDataNascimento());
 
     }
 
     @Test
-    public void adicionarEnderecoPostalTrue() {
+    public void adicionarEnderecoPostalEquals() {
 
 	Contactbook contactBook = new Contactbook();
 	List<EnderecoPostal> enderecoPostal = new ArrayList<>();
@@ -228,7 +290,7 @@ public class PersonTest {
 
 	person1.eliminarEnderecoPostal(0);
 
-	assertTrue(!(colaboradores.devolvePessoa("1").toString().contains(enderecoPostalTeste.toString())));
+	assertTrue(!(colaboradores.toString().contains(enderecoPostalTeste.getMorada().toString())));
 
     }
 
@@ -279,98 +341,6 @@ public class PersonTest {
     }
 
     @Test
-    public void marcarConcluidoTrueEquals() {
-
-	Contactbook contactBook = new Contactbook();
-	List<EnderecoPostal> enderecoPostal = new ArrayList<>();
-	List<TarefasPendentes> tarefasPendentes = new ArrayList<>();
-	List<TarefasConcluidas> tarefasConcluidas = new ArrayList<>();
-
-	Person person1 = new Person("Asdrubal", "96 999 999 9", "207867161", "Asdrubal@gmail.com", "20/05/1981",
-		contactBook, "1", enderecoPostal, tarefasConcluidas, tarefasPendentes);
-
-	TarefasPendentes tarefasConcluidaTeste = new TarefasPendentes("tarefa1", new Date(20, 05, 1981),
-		new Date(20, 05, 1981), new Date(20, 05, 1981));
-
-	person1.adicionarTarefas("tarefa1", new Date(20, 05, 1981), new Date(20, 05, 1981), new Date(20, 05, 1981));
-
-	Contactbook colaboradores = new Contactbook();
-
-	colaboradores.contactAdd(person1);
-
-	person1.marcarConcluido(0);
-
-	// assertTrue(colaboradores.devolvePessoa("1").getTarefasConcluidas().toString().contains("tarefa1"));
-
-	assertEquals(tarefasConcluidaTeste.toString(),
-		colaboradores.devolvePessoa("1").getTarefasConcluidas().get(0).toString());
-
-	// System.out.println(tarefasConcluidaTeste.toString());
-	// System.out.println(colaboradores.devolvePessoa("1").getTarefasConcluidas().get(0).toString());
-
-    }
-
-    @Test
-    public void marcarConcluidoFalseEquals() {
-
-	Contactbook contactBook = new Contactbook();
-	List<EnderecoPostal> enderecoPostal = new ArrayList<>();
-	List<TarefasPendentes> tarefasPendentes = new ArrayList<>();
-	List<TarefasConcluidas> tarefasConcluidas = new ArrayList<>();
-
-	Person person1 = new Person("Asdrubal", "96 999 999 9", "207867161", "Asdrubal@gmail.com", "20/05/1981",
-		contactBook, "1", enderecoPostal, tarefasConcluidas, tarefasPendentes);
-
-	TarefasPendentes tarefasConcluidaTeste = new TarefasPendentes("tarefa1", new Date(20, 05, 1981),
-		new Date(20, 05, 1981), new Date(20, 05, 1981));
-
-	person1.adicionarTarefas("tarefa1", new Date(20, 05, 1981), new Date(20, 05, 1981), new Date(20, 05, 1981));
-	person1.adicionarTarefas("tarefa2", new Date(20, 05, 1981), new Date(20, 05, 1981), new Date(20, 05, 1981));
-
-	Contactbook colaboradores = new Contactbook();
-
-	colaboradores.contactAdd(person1);
-
-	person1.marcarConcluido(0);
-
-	assertFalse(colaboradores.devolvePessoa("1").getTarefasConcluidas().toString().contains("tarefa2"));
-
-	assertEquals(tarefasConcluidas.get(0).toString(),
-		colaboradores.devolvePessoa("1").getTarefasConcluidas().get(0).toString());
-
-    }
-
-    @Test
-    public void marcarConcluidoTrueNotEquals() {
-
-	Contactbook contactBook = new Contactbook();
-	List<EnderecoPostal> enderecoPostal = new ArrayList<>();
-	List<TarefasPendentes> tarefasPendentes = new ArrayList<>();
-	List<TarefasConcluidas> tarefasConcluidas = new ArrayList<>();
-
-	Person person1 = new Person("Asdrubal", "96 999 999 9", "207867161", "Asdrubal@gmail.com", "20/05/1981",
-		contactBook, "1", enderecoPostal, tarefasConcluidas, tarefasPendentes);
-
-	TarefasPendentes tarefasConcluidaTeste = new TarefasPendentes("tarefa1", new Date(20, 05, 1981),
-		new Date(20, 05, 1981), new Date(20, 05, 1981));
-
-	person1.adicionarTarefas("tarefa1", new Date(20, 05, 1981), new Date(20, 05, 1981), new Date(20, 05, 1981));
-	person1.adicionarTarefas("tarefa2", new Date(20, 05, 1981), new Date(20, 05, 1981), new Date(20, 05, 1981));
-
-	Contactbook colaboradores = new Contactbook();
-
-	colaboradores.contactAdd(person1);
-
-	person1.marcarConcluido(0);
-
-	assertTrue(colaboradores.devolvePessoa("1").getTarefasConcluidas().toString().contains("tarefa1"));
-
-	// assertNotEquals(tarefasConcluidaTeste.toString(),
-	// colaboradores.devolvePessoa("1").getTarefasConcluidas().get(0).toString());
-	// TODO VERIFICAR TOSTRING
-    }
-
-    @Test
     public void removerTarefaTrue() {
 
 	Contactbook contactBook = new Contactbook();
@@ -381,7 +351,7 @@ public class PersonTest {
 	Person person1 = new Person("Asdrubal", "96 999 999 9", "207867161", "Asdrubal@gmail.com", "20/05/1981",
 		contactBook, "1", enderecoPostal, tarefasConcluidas, tarefasPendentes);
 
-	TarefasPendentes tarefasConcluidaTeste = new TarefasPendentes("tarefa1", new Date(20, 05, 1981),
+	TarefasPendentes tarefaPendente = new TarefasPendentes("tarefa1", new Date(20, 05, 1981),
 		new Date(20, 05, 1981), new Date(20, 05, 1981));
 
 	person1.adicionarTarefas("tarefa1", new Date(20, 05, 1981), new Date(20, 05, 1981), new Date(20, 05, 1981));
@@ -393,11 +363,40 @@ public class PersonTest {
 
 	person1.removerTarefa(0);
 
-	assertTrue(!colaboradores.devolvePessoa("1").getTarefasConcluidas().toString().contains("tarefa1"));
+	assertTrue(!colaboradores.devolvePessoa("1").getTarefasPendentes().get(0).toString()
+		.contains(tarefaPendente.toString()));
 
-	// assertNotEquals(tarefasConcluidaTeste.toString(),
-	// colaboradores.devolvePessoa("1").getTarefasConcluidas().get(0).toString());
-	// TODO VERIFICAR TOSTRING
+    }
+
+    @Test
+    public void marcarConcluidoPositiveAsserts() {
+
+	Contactbook contactBook = new Contactbook();
+	List<EnderecoPostal> enderecoPostal = new ArrayList<>();
+	List<TarefasPendentes> tarefasPendentes = new ArrayList<>();
+	List<TarefasConcluidas> tarefasConcluidas = new ArrayList<>();
+
+	Person person1 = new Person("Asdrubal", "96 999 999 9", "207867161", "Asdrubal@gmail.com", "20/05/1981",
+		contactBook, "1", enderecoPostal, tarefasConcluidas, tarefasPendentes);
+
+	TarefasPendentes tarefaPendente = new TarefasPendentes("tarefa1", new Date(20, 05, 1981),
+		new Date(20, 05, 1981), new Date(20, 05, 1981));
+
+	person1.adicionarTarefas("tarefa1", new Date(20, 05, 1981), new Date(20, 05, 1981), new Date(20, 05, 1981));
+	person1.adicionarTarefas("tarefa2", new Date(20, 05, 1981), new Date(20, 05, 1981), new Date(20, 05, 1981));
+
+	Contactbook colaboradores = new Contactbook();
+
+	colaboradores.contactAdd(person1);
+
+	person1.marcarConcluido(0);
+
+	assertEquals(tarefaPendente.toString(),
+		colaboradores.devolvePessoa("1").getTarefasConcluidas().get(0).toString());
+
+	assertTrue(!colaboradores.devolvePessoa("1").getTarefasPendentes().get(0).toString()
+		.contains(tarefaPendente.toString()));
+
     }
 
 }

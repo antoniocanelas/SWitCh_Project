@@ -1,5 +1,6 @@
 package week8;
 
+// isto é um teste1
 public class EnderecoPostal {
 
     private String morada;
@@ -9,7 +10,7 @@ public class EnderecoPostal {
 
     public String getMorada() {
 
-	return morada;
+	return this.morada;
     }
 
     public void setMorada(String morada) {
@@ -19,7 +20,7 @@ public class EnderecoPostal {
 
     public String getCidade() {
 
-	return cidade;
+	return this.cidade;
     }
 
     public void setCidade(String cidade) {
@@ -29,7 +30,7 @@ public class EnderecoPostal {
 
     public String getCodigoPostal() {
 
-	return codigoPostal;
+	return this.codigoPostal;
     }
 
     public void setCodigoPostal(String codigoPostal) {
@@ -39,7 +40,7 @@ public class EnderecoPostal {
 
     public String getPais() {
 
-	return pais;
+	return this.pais;
     }
 
     public void setPais(String pais) {
@@ -50,8 +51,8 @@ public class EnderecoPostal {
     @Override
     public String toString() {
 
-	return "EnderecoPostal [morada=" + morada + ", cidade=" + cidade + ", codigoPostal=" + codigoPostal + ", pais="
-		+ pais + "]";
+	return "EnderecoPostal [morada=" + this.morada + ", cidade=" + this.cidade + ", codigoPostal="
+		+ this.codigoPostal + ", pais=" + this.pais + "]";
     }
 
     public EnderecoPostal(String morada, String cidade, String codigoPostal, String pais) {
@@ -60,11 +61,6 @@ public class EnderecoPostal {
 	this.cidade = cidade;
 	this.codigoPostal = codigoPostal;
 	this.pais = pais;
-    }
-
-    public void addEnderecoPostal(EnderecoPostal novoEnderecoPostal) {
-
-	this.addEnderecoPostal(novoEnderecoPostal);
     }
 
 }

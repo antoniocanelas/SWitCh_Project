@@ -13,7 +13,6 @@ public class TarefasConcluidas {
 
     public TarefasConcluidas() {
 
-	// TODO Auto-generated constructor stub
     }
 
     public TarefasConcluidas(String descricao, Date dataCriacao, Date dataIniciada, Date dataConcluida) {
@@ -27,14 +26,14 @@ public class TarefasConcluidas {
 
     public String getDescricao() {
 
-	return descricao;
+	return this.descricao;
     }
 
     @Override
     public String toString() {
 
-	return "[descricao=" + descricao + ", dataCriacao=" + dataCriacao + ", dataIniciada=" + dataIniciada
-		+ ", dataConcluida=" + dataConcluida + "]";
+	return "[descricao=" + this.descricao + ", dataCriacao=" + this.dataCriacao + ", dataIniciada="
+		+ this.dataIniciada + ", dataConcluida=" + this.dataConcluida + "]";
     }
 
     public void setDescricao(String descricao) {
@@ -44,7 +43,7 @@ public class TarefasConcluidas {
 
     public Date getDataCriacao() {
 
-	return dataCriacao;
+	return this.dataCriacao;
     }
 
     public void setDataCriacao(Date dataCriacao) {
@@ -54,7 +53,7 @@ public class TarefasConcluidas {
 
     public Date getDataIniciada() {
 
-	return dataIniciada;
+	return this.dataIniciada;
     }
 
     public void setDataIniciada(Date dataIniciada) {
@@ -64,7 +63,7 @@ public class TarefasConcluidas {
 
     public Date getDataConcluida() {
 
-	return dataConcluida;
+	return this.dataConcluida;
     }
 
     public void setDataConcluida(Date dataConcluida) {

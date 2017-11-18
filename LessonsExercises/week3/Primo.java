@@ -17,7 +17,7 @@ public class Primo {
 				primo = false;
 			else {
 				int i = 2;
-				while (i < numero && primo == true) {
+				while (i < numero && primo) {
 					if (numero % 2 == 0)
 						primo = false;
 					i++;

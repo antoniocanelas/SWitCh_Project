@@ -204,7 +204,7 @@ public class Person {
     @Override
     public String toString() {
 
-	return "Person [name=" + name + ", phoneNumber=" + phoneNumber + ", nif=" + nif + ", email=" + email
+	return "Colaborador [name=" + name + ", phoneNumber=" + phoneNumber + ", nif=" + nif + ", email=" + email
 		+ ", dataNascimento=" + dataNascimento + ", numeroMecanografico=" + numeroMecanografico
 		+ ", enderecoPostal=" + enderecoPostal + ", tarefasConcluidas=" + tarefasConcluidas
 		+ ", tarefasPendentes=" + tarefasPendentes + "]";
